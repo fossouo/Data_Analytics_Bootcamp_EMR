@@ -35,10 +35,11 @@ aws s3 cp example_emr_serverless.py s3://mwaa-cloudformation-emrserverlessbucket
 #### 2.2 Launch Spark job on EMR Cluster 
 ##### 2.2.1 EMR Steps 
 ```
-Admin:~/environment $ aws emr add-steps --cluster-id j-2VLSYP0B5G0RW --steps Type=spark,Name=weather,Args=[--deploy-mode,cluster,--master,yarn,--conf,spark.yarn.submit.waitAppCompletion=true,--executor-memory,2g,s3://mwaa-cloudformation-emrserverlessbucket-1iahcnuqk2oln/sparkjob/extreme_weather.py,ActionOnFailure=CONTINUE]
+Admin:~/environment $ aws emr add-steps --cluster-id j-2VLSYP0B5G0RW --steps Type=Spark,Name="Spark Program",ActionOnFailure=CONT
+INUE,Args=[--class,org.apache.spark.examples.SparkPi,/usr/lib/spark/examples/jars/spark-examples.jar,10]                         
 {
     "StepIds": [
-        "s-3B7E3Y8TN5EDO"
+        "s-35569BKW4RMTS"
     ]
 }
 ```

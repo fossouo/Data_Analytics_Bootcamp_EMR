@@ -24,6 +24,11 @@ You can get the VPC name in Events section of CloudFormation Template).
 
 Using the VPC name issued of the deployment of CloudFormation. We will use Cloud9 instance for submitting dags to MWAA.  
 
+```
+aws s3 cp requirements.txt s3://mwaa-cloudformation-emrserverlessbucket-1iahcnuqk2oln/
+aws s3 cp example_emr_serverless.py s3://mwaa-cloudformation-emrserverlessbucket-1iahcnuqk2oln/airflow/dags/
+```
+
 ### 2. Spark on EMR 
 
 #### 2.1 Connect on Master Node using SSM (https://aws.amazon.com/fr/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/) 

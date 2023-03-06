@@ -34,4 +34,13 @@ aws s3 cp example_emr_serverless.py s3://mwaa-cloudformation-emrserverlessbucket
 #### 2.1 Connect on Master Node using SSM (https://aws.amazon.com/fr/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/) 
 #### 2.2 Launch Spark job on EMR Cluster 
 ##### 2.2.1 EMR Steps 
+```
+Admin:~/environment $ aws emr add-steps --cluster-id j-2VLSYP0B5G0RW --steps Type=spark,Name=weather,Args=[--deploy-mode,cluster,--master,yarn,--conf,spark.yarn.submit.waitAppCompletion=true,--executor-memory,2g,s3://mwaa-cloudformation-emrserverlessbucket-1iahcnuqk2oln/sparkjob/extreme_weather.py,ActionOnFailure=CONTINUE]
+{
+    "StepIds": [
+        "s-3B7E3Y8TN5EDO"
+    ]
+}
+```
 ##### 2.2.2 Spark Submit 
+

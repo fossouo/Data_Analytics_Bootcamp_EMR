@@ -43,6 +43,8 @@ aws s3 cp example_emr_serverless.py s3://mwaa-cloudformation-emrserverlessbucket
     * Key pair: course-key (or any other key you want to use, You can create the EC2 key pair using EC2 Service)
 * Make sure to select EMR release emr-6.9.0
 
+You can use this link for steps by steps guide in the creation : https://catalog.us-east-1.prod.workshops.aws/workshops/c86bd131-f6bf-4e8f-b798-58fd450d3c44/en-US/cluster-creation/cluster 
+
 #### 2.1 Connect on Master Node using EC2 key pair 
 
 You can copy the Master Node DNS name from EMR Service -> Cluster Name 
@@ -75,5 +77,5 @@ $ spark-submit wordcount.py
 $ spark-submit --num-executors 2 --executor-cores 4 wordcount.py 
 ```
 
-
+You can use this link for steps by steps guide in execution of spark-submit : https://catalog.us-east-1.prod.workshops.aws/workshops/c86bd131-f6bf-4e8f-b798-58fd450d3c44/en-US/spark-etl/cli 
 

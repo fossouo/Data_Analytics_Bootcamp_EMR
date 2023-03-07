@@ -22,7 +22,7 @@ You can get the VPC name in Events section of CloudFormation Template).
 
 #### 1.4 Create Cloud9 instance 
 
-Using the VPC name issued of the deployment of CloudFormation. We will use Cloud9 instance for submitting dags to MWAA.  
+Using the VPC name issued of the deployment of CloudFormation. We will use Cloud9 instance for submitting dags to MWAA.  S3Bucket variable is an output of CloudFormation Template. 
 
 ```
 aws s3 cp requirements.txt s3://mwaa-cloudformation-emrserverlessbucket-1iahcnuqk2oln/

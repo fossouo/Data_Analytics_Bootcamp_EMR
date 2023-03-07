@@ -31,7 +31,25 @@ aws s3 cp example_emr_serverless.py s3://mwaa-cloudformation-emrserverlessbucket
 
 ### 2. Spark on EMR 
 
-#### 2.1 Connect on Master Node using SSM (https://aws.amazon.com/fr/blogs/big-data/securing-access-to-emr-clusters-using-aws-systems-manager/) 
+#### 2.1 Create EMR Cluster 
+
+● Go to the EMR dashboard and click “Create cluster”. We recommend the following configuration
+    ○ ClusterName: MySpark
+    ○ Launch mode “Cluster”
+    ○ Release: emr-6.9.0
+    ○ Applications: Spark
+    ○ Instance type: m4.xlarge
+    ○ Number of Instances: 3
+    ○ Key pair: course-key (or any other key you want to use, You can create the EC2 key pair using EC2 Service)
+● Make sure to select EMR release emr-6.9.0
+
+#### 2.1 Connect on Master Node using EC2 key pair 
+
+You can copy the Master Node DNS name from EMR Service -> Cluster Name 
+```
+$ ssh -i ~/.ssh/course-key.pem hadoop@ec2-100-24-206-111.compute-1.amazonaws.com
+```
+
 #### 2.2 Launch Spark job on EMR Cluster 
 ##### 2.2.1 EMR Steps 
 ```
@@ -44,4 +62,18 @@ INUE,Args=[--class,org.apache.spark.examples.SparkPi,/usr/lib/spark/examples/jar
 }
 ```
 ##### 2.2.2 Spark Submit 
+
+● Upload input.txt and wordcount.py to master node using scp command (copy over ssh)
+● Upload the input.txt file to HDFS 
+```
+$ hadoop fs -put input.txt
+```
+● Run spark-submit command : 
+  
+```
+$ spark-submit wordcount.py 
+$ spark-submit --num-executors 2 --executor-cores 4 wordcount.py 
+```
+
+
 
